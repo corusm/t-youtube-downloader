@@ -1,0 +1,16 @@
+{
+  "name": "aidayoutubebot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "“Niklas <“dev@corusm.de”>",
+  "license": "ISC",
+  "dependencies": {
+    "telegraf": "^3.25.5",
+    "ytdl-core": "^0.28.3"
+  }
+}
