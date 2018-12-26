@@ -14,6 +14,8 @@ const config = require(`./config.json`);
 
 console.log("Bot is running;; TOKEN: " + config.token);
 
+var URL = "https://www.youtube.com/watch?v=";
+
 const bot = new Telegraf(config.token);
 bot.start((ctx) => ctx.reply('Hey there!'));
 bot.help((ctx) => ctx.reply('Send me a link and I will send you the vid :) \n cmds: \n \n /video {videoURL} -- is downloading the video \n /get -- is sending the video'));
@@ -23,7 +25,8 @@ bot.startPolling();
 bot.command('/video', (ctx) => {
     let input = ctx.message["text"];
     let subText = input.split(" ");
-    ytdl(subText[1])
+    let out = URL + subText[1];
+    ytdl(out)
         .pipe(fs.createWriteStream(`${__dirname}/video.mp4`))
     ctx.reply('Video has been downloaded!');
 })
