@@ -35,7 +35,11 @@ bot.command('/video', (ctx) => {
 // Send video to User
 bot.command('/get', (ctx) => {
     ctx.reply('Sending video...');
-    ctx.replyWithVideo({
-        source: fs.createReadStream(`${__dirname}/video.mp4`)
-    })
+    try {
+        ctx.replyWithVideo({
+            source: fs.createReadStream(`${__dirname}/video.mp4`)
+        })
+    } catch(err) {
+        ctx.reply("Error (Video to long?)");
+    }
 })
