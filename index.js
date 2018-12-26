@@ -18,7 +18,7 @@ var downurl = "https://www.youtube.com/watch?v=";
 
 const bot = new Telegraf(config.token);
 bot.start((ctx) => ctx.reply('Hey there!'));
-bot.help((ctx) => ctx.reply('Send me a link and I will send you the vid :) \n cmds: \n \n /video {videoURL} -- is downloading the video \n /get -- is sending the video'));
+bot.help((ctx) => ctx.reply('Send me a link and I will send you the vid :) \n cmds: \n \n /video {videoID} -- is downloading the video \n /get -- is sending the video'));
 bot.startPolling();
 
 // Download Video to Server
