@@ -5,10 +5,11 @@ const ytdl = require('ytdl-core');
 const path = require('path');
 
 // Files
-const config = require(`./config.json`);
+const config = require(`${__dirname}/config.json`);
 
 // Variables
 var vidID = 1;
+var status = 3;
 var downurl = "https://www.youtube.com/watch?v=";
 const directory = `${__dirname}/cache`;
 
@@ -29,15 +30,23 @@ bot.help((ctx) => ctx.reply('Send me a link and I will send you the vid :) \n cm
 bot.startPolling();
 
 // Download Video to Server
-bot.command('/video', (ctx) => {
+bot.command('/video', async (ctx) => {
     videoId();
     let input = ctx.message["text"];
     let subText = input.split(" ");
     let out = downurl + subText[1];
     console.log(out);
-    ytdl(out, "lowest", "videoonly")
-        .pipe(fs.createWriteStream(`${__dirname}/cache/${vidID}.flv`))
-    ctx.reply(`Video has been downloaded! SavingID = ${vidID}`);
+
+
+    // Downloading Video
+    var retVal = await downloadVideo(out);
+    if (status === 1) {
+        ctx.reply(`Video has been downloaded! SavingID = ${vidID}`);
+    }
+    if (status = 2) {
+        ctx.reply(err.toString());
+    }
+
 
     if (vidID > 9) {
         clearStorage();
@@ -48,14 +57,10 @@ bot.command('/video', (ctx) => {
 // Send video to User
 bot.command('/get', (ctx) => {
     ctx.reply('Sending video...');
-    try {
-        console.log("Sending video...");
-        ctx.replyWithVideo({
-            source: fs.createReadStream(`${__dirname}/cache/${vidID}.flv`)
-        })
-    } catch (err) {
-        ctx.reply("Error");
-    }
+    console.log("Sending video...");
+    ctx.replyWithVideo({
+        source: fs.createReadStream(`${__dirname}/cache/${vidID}.flv`)
+    })
 })
 
 // Clear videos from cache
@@ -73,16 +78,32 @@ function videoId() {
 
 // Clear Cache
 function clearStorage() {
-    fs.readdir(directory, (err, files) => {
-        if (err) console.log(err);
+    try {
+        fs.readdir(directory, (err, files) => {
+            if (err) console.log(err);
 
-        for (const file of files) {
-            fs.unlink(path.join(directory, file), err => {
-                if (err) console.log(err);
-            });
-        }
-    });
+            for (const file of files) {
+                fs.unlink(path.join(directory, file), err => {
+                    if (err) console.log(err);
+                });
+            }
+        });
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+async function downloadVideo(out) {
+    try {
+        await ytdl(out, "lowest", "videoonly")
+            .pipe(fs.createWriteStream(`${__dirname}/cache/${vidID}.flv`))
+        status = 1;
+    } catch (err) {
+        console.log(err);
+        status = 2;
+        return err;
+    }
 }
 
 // Catch all errors from bot
-bot.catch(function (error) { console.log(err) });
+bot.catch(function (err) { console.log(err) });

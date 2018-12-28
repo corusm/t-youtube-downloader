@@ -10,7 +10,10 @@
   "author": "“Niklas <“dev@corusm.de”>",
   "license": "ISC",
   "dependencies": {
+    "npm": "^6.5.0",
     "telegraf": "^3.25.5",
+    "winston": "^3.1.0",
+    "youtube-dl": "^1.12.2",
     "ytdl-core": "^0.28.3"
   }
 }
