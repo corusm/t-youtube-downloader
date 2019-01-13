@@ -67,6 +67,7 @@ bot.command('/video', async (ctx) => {
         videosize = infor.size / 1000000;
 
         if (videosize < TeleMaxData) {
+            ctx.reply('Download Started')
             video.pipe(fs.createWriteStream(`${__dirname}/cache/${userID}.mp4`));
 
             // Status of Download
@@ -85,7 +86,7 @@ bot.command('/video', async (ctx) => {
                 logger.log("info", "Download completed");
                 try {
                     ctx.reply(`Download completed!\nVideo gets Send! - This might take a few Seconds! \n \n Title: \n ${infor.title}. It's ${videosize}mb big.`);
-                    logger.log('info', `Video gets Send! - This might take a few Seconds! \n Title: ${infor.title}, Size: ${infor.size}`);
+                    logger.log('info', `Video gets Send! - This might take a few Seconds! \n Title: ${infor.title}, Size: ${videosize}`);
                     await ctx.replyWithVideo({
                         source: fs.createReadStream(`${__dirname}/cache/${userID}.mp4`)
                     })
