@@ -1,11 +1,12 @@
 {
-  "name": "youtube-downloader",
+  "name": "t-youtube-downloader",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "stop": "pkill -f node"
   },
   "author": "“Niklas <“dev@corusm.de”>",
   "license": "ISC",
@@ -14,6 +15,5 @@
     "telegraf": "^3.25.5",
     "winston": "^3.1.0",
     "youtube-dl": "^1.12.2",
-    "ytdl-core": "^0.28.3"
   }
 }
