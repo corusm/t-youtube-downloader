@@ -102,7 +102,7 @@ bot.command('/video', async (ctx) => {
             }
         });
     } catch (err) {
-        ctx.reply(err);
-        logger.log("info", err);
+        ctx.reply("ERROR");
+        logger.log("info", "error");
     }
 })
