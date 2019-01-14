@@ -6,7 +6,7 @@ Because Telegram has a limitation for sending videos the largest possible videos
 Have fun with this little work around :D
 
 Important infos:
-- Mutltiple users at the same time
+- Mutltiple users at the same time possible
 - Self hosting => Telegram blocks bots that violate the copright
     - You can use the bot on your own risk
 
