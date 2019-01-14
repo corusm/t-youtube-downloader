@@ -72,6 +72,7 @@ bot.command('/video', async (ctx) => {
                 video.pipe(fs.createWriteStream(`${__dirname}/cache/${userID}.mp4`));
 
                 // Status of Download
+                /* UNCOMMENT FOR DOWNLOAD STATUS IN TERMINAL
                 var pos = 0;
                 video.on('data', function data(chunk) {
                     pos += chunk.length;
@@ -82,6 +83,7 @@ bot.command('/video', async (ctx) => {
                         process.stdout.write(percent + '%');
                     }
                 })
+                */
 
                 video.on('end', async function () {
                     logger.log("info", "Download completed");
