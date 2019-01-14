@@ -1,6 +1,6 @@
 # Telegram Youtube-Downloader
 
-This bot sends videos from Youtube to Telegram. I made this bot because when I was in vacations I had a social media flat where I couldn't access Youtube (cruise ship aka. Aida). I just could messengers like Telegram.
+This bot sends videos from Youtube to Telegram. I made this bot because when I was in vacations I had a social media flat where I couldn't access Youtube (cruise ship aka. Aida). I just could use messengers like Telegram.
 
 Because Telegram has a limitation for sending videos the largest possible videos that could be send could have a size of 50MB. Telegram recently made a post where they wrote that they will increase this value soon.
 Have fun with this little work around :D
