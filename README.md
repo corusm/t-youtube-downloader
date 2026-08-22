@@ -1,3 +1,5 @@
+
+
 # Telegram Youtube-Downloader
 
 This bot sends videos from Youtube to Telegram. I made this bot because when I was in vacations I had a social media flat where I couldn't access Youtube (cruise ship aka. Aida). I just could use messengers like Telegram.
@@ -37,10 +39,10 @@ Here there are incstructions for creating a Telegram Bot
 1. [Create Telegram Bot](https://www.sohamkamani.com/blog/2016/09/21/making-a-telegram-bot/)
 
 ## Add Tokens
-Add your discord and telegram bot token to the **config.json** file
+Add your Telegram bot token to the **config.json** file
 ```
 {
-  "telegram": "placeYourTokenHere"
+  "token": "placeYourTokenHere"
 }
 ```
 
